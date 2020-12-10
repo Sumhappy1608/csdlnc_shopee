@@ -18,6 +18,11 @@ namespace csdlnc_shopee
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "user",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "user", action = "account", id = UrlParameter.Optional  }
+            );
         }
     }
 }

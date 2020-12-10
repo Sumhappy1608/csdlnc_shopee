@@ -773,6 +773,11 @@ Version:1.0
   padding: 0;
   top: 0;
 }
+.body-content {
+  padding-left: 15px;
+  padding-right: 15px;
+  background: rgb(245 245 245);
+}
 .header.shop .middle-inner {
   background: linear-gradient(-180deg, #f53d2d, #f63);
 }
@@ -4899,8 +4904,32 @@ Version:1.0
 /*=============================
 	20. Start Footer CSS
 ===============================*/
+.col-5-elements {
+  width: 20%;
+  font-size: smaller;
+}
+.col-5-elements > div {
+  text-transform: uppercase;
+  font-weight: 700 !important;
+  margin-bottom: 1.25rem;
+  margin-top: 2.5rem;
+}
+.col-5-elements ul li a i {
+  margin-right: 4px;
+}
+[class~="col-5-elements"]:last-of-type:last-child {
+  margin: 0px;
+}
+.qr-code {
+  width: 84px;
+  height: 84px;
+}
+.download-link {
+  margin-left: 0.8125rem;
+  height: 1.25rem;
+}
 .footer {
-  background: #222;
+  background: #fff;
 }
 .footer .about {
   padding-right: 50px;
@@ -4957,6 +4986,7 @@ Version:1.0
 }
 .footer .social .contact ul {
 }
+
 .footer .social .contact ul li {
   color: #fff;
   display: block;

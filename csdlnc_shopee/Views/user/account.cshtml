@@ -2,7 +2,8 @@
 @{
     ViewBag.Title = "account";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var urlQuery = Url.RequestContext.RouteData.Values["id"];
 }
 
-<h2>account</h2>
+<h3>@urlQuery</h3>
 

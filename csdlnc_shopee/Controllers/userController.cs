@@ -8,9 +8,14 @@ namespace csdlnc_shopee.Controllers
 {
     public class userController : Controller
     {
+         
         // GET: user
         public ActionResult account()
         {
+            if (Url.RequestContext.RouteData.Values["id"]==null)
+            {
+                return Redirect("~/user/account/profile");
+            }
             return View();
         }
     }
