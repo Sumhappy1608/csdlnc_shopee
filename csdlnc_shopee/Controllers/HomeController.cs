@@ -17,6 +17,15 @@ namespace csdlnc_shopee.Controllers
             return View(pList);
         }
 
+        //Lấy chi tiết sản phẩm
+
+        public ActionResult ProductDetail(string productID)
+        {
+            shopeeEntities db = new shopeeEntities();
+            HANGHOA product = db.HANGHOAs.Where(x => x.MAHANGHOA == productID).SingleOrDefault();
+            return View(product);
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
