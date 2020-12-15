@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="shopeeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DANHMUC">
+    <Key>
+      <PropertyRef Name="MALOAI" />
+    </Key>
+    <Property Name="MALOAI" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="TENLOAI" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="CHITIETLOAI" Type="nvarchar(max)" />
+    <Property Name="NGANHHANG" Type="char" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="HANGHOA">
+    <Key>
+      <PropertyRef Name="MAHANGHOA" />
+    </Key>
+    <Property Name="MAHANGHOA" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="TENHANGHOA" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="MOTA" Type="nvarchar(max)" />
+    <Property Name="GIATHANH" Type="float" Nullable="false" />
+    <Property Name="SOLUONGTON" Type="int" Nullable="false" />
+    <Property Name="LOAIHANGHOA" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="HHFlag" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="DANHGIA_HANGHOA" Type="float" />
+    <Property Name="THOIHANSUDUNG" Type="datetime" />
+    <Property Name="SOLUONGDABAN" Type="int" />
+    <Property Name="HINHANH" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="NGANHHANG">
+    <Key>
+      <PropertyRef Name="MANGANHHANG" />
+    </Key>
+    <Property Name="MANGANHHANG" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="TENNGANHHANG" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_DANHMUC_NGANHHANG_NGANHHANG">
+    <End Role="NGANHHANG" Type="Self.NGANHHANG" Multiplicity="0..1" />
+    <End Role="DANHMUC" Type="Self.DANHMUC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NGANHHANG">
+        <PropertyRef Name="MANGANHHANG" />
+      </Principal>
+      <Dependent Role="DANHMUC">
+        <PropertyRef Name="NGANHHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HANGHOA_DANHMUC_LOAIHANGHOA">
+    <End Role="DANHMUC" Type="Self.DANHMUC" Multiplicity="1" />
+    <End Role="HANGHOA" Type="Self.HANGHOA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DANHMUC">
+        <PropertyRef Name="MALOAI" />
+      </Principal>
+      <Dependent Role="HANGHOA">
+        <PropertyRef Name="LOAIHANGHOA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="shopeeModelStoreContainer">
+    <EntitySet Name="DANHMUC" EntityType="Self.DANHMUC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HANGHOA" EntityType="Self.HANGHOA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NGANHHANG" EntityType="Self.NGANHHANG" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_DANHMUC_NGANHHANG_NGANHHANG" Association="Self.FK_DANHMUC_NGANHHANG_NGANHHANG">
+      <End Role="NGANHHANG" EntitySet="NGANHHANG" />
+      <End Role="DANHMUC" EntitySet="DANHMUC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HANGHOA_DANHMUC_LOAIHANGHOA" Association="Self.FK_HANGHOA_DANHMUC_LOAIHANGHOA">
+      <End Role="DANHMUC" EntitySet="DANHMUC" />
+      <End Role="HANGHOA" EntitySet="HANGHOA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

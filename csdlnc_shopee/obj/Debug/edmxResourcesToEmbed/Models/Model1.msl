@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="shopeeModelStoreContainer" CdmEntityContainer="shopeeDB">
+    <EntitySetMapping Name="DANHMUCs">
+      <EntityTypeMapping TypeName="shopeeModel.DANHMUC">
+        <MappingFragment StoreEntitySet="DANHMUC">
+          <ScalarProperty Name="MALOAI" ColumnName="MALOAI" />
+          <ScalarProperty Name="TENLOAI" ColumnName="TENLOAI" />
+          <ScalarProperty Name="CHITIETLOAI" ColumnName="CHITIETLOAI" />
+          <ScalarProperty Name="NGANHHANG" ColumnName="NGANHHANG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DATHANGs">
+      <EntityTypeMapping TypeName="shopeeModel.DATHANG">
+        <MappingFragment StoreEntitySet="DATHANG">
+          <ScalarProperty Name="ID_DONHANG" ColumnName="ID_DONHANG" />
+          <ScalarProperty Name="NGUOIMUA" ColumnName="NGUOIMUA" />
+          <ScalarProperty Name="NGAYDAT" ColumnName="NGAYDAT" />
+          <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DONHANGs">
+      <EntityTypeMapping TypeName="shopeeModel.DONHANG">
+        <MappingFragment StoreEntitySet="DONHANG">
+          <ScalarProperty Name="ID_DONHANG" ColumnName="ID_DONHANG" />
+          <ScalarProperty Name="MAGIANHANG" ColumnName="MAGIANHANG" />
+          <ScalarProperty Name="MASANPHAM" ColumnName="MASANPHAM" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="DONGIA" ColumnName="DONGIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DONMUAs">
+      <EntityTypeMapping TypeName="shopeeModel.DONMUA">
+        <MappingFragment StoreEntitySet="DONMUA">
+          <ScalarProperty Name="MADONVAN" ColumnName="MADONVAN" />
+          <ScalarProperty Name="MADVVC" ColumnName="MADVVC" />
+          <ScalarProperty Name="ID_DONHANG" ColumnName="ID_DONHANG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DONVIVANCHUYENs">
+      <EntityTypeMapping TypeName="shopeeModel.DONVIVANCHUYEN">
+        <MappingFragment StoreEntitySet="DONVIVANCHUYEN">
+          <ScalarProperty Name="MADONVI" ColumnName="MADONVI" />
+          <ScalarProperty Name="TENDONVI" ColumnName="TENDONVI" />
+          <ScalarProperty Name="DIENTHOAI_DVVC" ColumnName="DIENTHOAI_DVVC" />
+          <ScalarProperty Name="EMAIL_DVVC" ColumnName="EMAIL_DVVC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GIANHANGs">
+      <EntityTypeMapping TypeName="shopeeModel.GIANHANG">
+        <MappingFragment StoreEntitySet="GIANHANG">
+          <ScalarProperty Name="MAGIANHANG" ColumnName="MAGIANHANG" />
+          <ScalarProperty Name="TENGIANHANG" ColumnName="TENGIANHANG" />
+          <ScalarProperty Name="DANHGIA_GIANHANG" ColumnName="DANHGIA_GIANHANG" />
+          <ScalarProperty Name="LuongNguoiTheoDoi" ColumnName="LuongNguoiTheoDoi" />
+          <ScalarProperty Name="ID_NGUOIBAN" ColumnName="ID_NGUOIBAN" />
+          <ScalarProperty Name="LoaiGianHang" ColumnName="LoaiGianHang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GIOHANGs">
+      <EntityTypeMapping TypeName="shopeeModel.GIOHANG">
+        <MappingFragment StoreEntitySet="GIOHANG">
+          <ScalarProperty Name="ID_NGUOIMUA" ColumnName="ID_NGUOIMUA" />
+          <ScalarProperty Name="MAGIANHANG" ColumnName="MAGIANHANG" />
+          <ScalarProperty Name="MAHANGHOA" ColumnName="MAHANGHOA" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HANGHOAs">
+      <EntityTypeMapping TypeName="shopeeModel.HANGHOA">
+        <MappingFragment StoreEntitySet="HANGHOA">
+          <ScalarProperty Name="MAHANGHOA" ColumnName="MAHANGHOA" />
+          <ScalarProperty Name="TENHANGHOA" ColumnName="TENHANGHOA" />
+          <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+          <ScalarProperty Name="GIATHANH" ColumnName="GIATHANH" />
+          <ScalarProperty Name="SOLUONGTON" ColumnName="SOLUONGTON" />
+          <ScalarProperty Name="LOAIHANGHOA" ColumnName="LOAIHANGHOA" />
+          <ScalarProperty Name="HHFlag" ColumnName="HHFlag" />
+          <ScalarProperty Name="DANHGIA_HANGHOA" ColumnName="DANHGIA_HANGHOA" />
+          <ScalarProperty Name="THOIHANSUDUNG" ColumnName="THOIHANSUDUNG" />
+          <ScalarProperty Name="SOLUONGDABAN" ColumnName="SOLUONGDABAN" />
+          <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LICHSUDANHGIAGIANHANGs">
+      <EntityTypeMapping TypeName="shopeeModel.LICHSUDANHGIAGIANHANG">
+        <MappingFragment StoreEntitySet="LICHSUDANHGIAGIANHANG">
+          <ScalarProperty Name="MAGIANHANG" ColumnName="MAGIANHANG" />
+          <ScalarProperty Name="ID_NGUOIMUA" ColumnName="ID_NGUOIMUA" />
+          <ScalarProperty Name="NGAYDANHGIA_GIANHANG" ColumnName="NGAYDANHGIA_GIANHANG" />
+          <ScalarProperty Name="SOSAO_GIANHANG" ColumnName="SOSAO_GIANHANG" />
+          <ScalarProperty Name="NHANXET_GIANHANG" ColumnName="NHANXET_GIANHANG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LICHSUXEMHANGHOAs">
+      <EntityTypeMapping TypeName="shopeeModel.LICHSUXEMHANGHOA">
+        <MappingFragment StoreEntitySet="LICHSUXEMHANGHOA">
+          <ScalarProperty Name="ID_TAIKHOAN" ColumnName="ID_TAIKHOAN" />
+          <ScalarProperty Name="MAHANGHOA" ColumnName="MAHANGHOA" />
+          <ScalarProperty Name="THOIGIANTRUYCAP" ColumnName="THOIGIANTRUYCAP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAIVOUCHERs">
+      <EntityTypeMapping TypeName="shopeeModel.LOAIVOUCHER">
+        <MappingFragment StoreEntitySet="LOAIVOUCHER">
+          <ScalarProperty Name="MALOAIVOUCHER" ColumnName="MALOAIVOUCHER" />
+          <ScalarProperty Name="TENLOAIVOUCHER" ColumnName="TENLOAIVOUCHER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NGANHHANGs">
+      <EntityTypeMapping TypeName="shopeeModel.NGANHHANG">
+        <MappingFragment StoreEntitySet="NGANHHANG">
+          <ScalarProperty Name="MANGANHHANG" ColumnName="MANGANHHANG" />
+          <ScalarProperty Name="TENNGANHHANG" ColumnName="TENNGANHHANG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THANHTOANs">
+      <EntityTypeMapping TypeName="shopeeModel.THANHTOAN">
+        <MappingFragment StoreEntitySet="THANHTOAN">
+          <ScalarProperty Name="SO_THANHTOAN" ColumnName="SO_THANHTOAN" />
+          <ScalarProperty Name="NGAYTHANHTOAN" ColumnName="NGAYTHANHTOAN" />
+          <ScalarProperty Name="ID_DONHANG" ColumnName="ID_DONHANG" />
+          <ScalarProperty Name="SOTIENTT" ColumnName="SOTIENTT" />
+          <ScalarProperty Name="UUDAI" ColumnName="UUDAI" />
+          <ScalarProperty Name="LOAITHANHTOAN" ColumnName="LOAITHANHTOAN" />
+          <ScalarProperty Name="HOANTIEN" ColumnName="HOANTIEN" />
+          <ScalarProperty Name="LOAITTONLINE" ColumnName="LOAITTONLINE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THANHVIENs">
+      <EntityTypeMapping TypeName="shopeeModel.THANHVIEN">
+        <MappingFragment StoreEntitySet="THANHVIEN">
+          <ScalarProperty Name="ID_THANHVIEN" ColumnName="ID_THANHVIEN" />
+          <ScalarProperty Name="EMAIL_TV" ColumnName="EMAIL_TV" />
+          <ScalarProperty Name="DIENTHOAI_TV" ColumnName="DIENTHOAI_TV" />
+          <ScalarProperty Name="DIACHI_TV" ColumnName="DIACHI_TV" />
+          <ScalarProperty Name="NGUOIBANFLAG" ColumnName="NGUOIBANFLAG" />
+          <ScalarProperty Name="NGUOIMUAFLAG" ColumnName="NGUOIMUAFLAG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THONGTINDONHANGs">
+      <EntityTypeMapping TypeName="shopeeModel.THONGTINDONHANG">
+        <MappingFragment StoreEntitySet="THONGTINDONHANG">
+          <ScalarProperty Name="ID_DONHANG" ColumnName="ID_DONHANG" />
+          <ScalarProperty Name="THOIGIAN" ColumnName="THOIGIAN" />
+          <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THONGTINVANCHUYENs">
+      <EntityTypeMapping TypeName="shopeeModel.THONGTINVANCHUYEN">
+        <MappingFragment StoreEntitySet="THONGTINVANCHUYEN">
+          <ScalarProperty Name="MADONVAN" ColumnName="MADONVAN" />
+          <ScalarProperty Name="THOIGIAN" ColumnName="THOIGIAN" />
+          <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VOUCHERs">
+      <EntityTypeMapping TypeName="shopeeModel.VOUCHER">
+        <MappingFragment StoreEntitySet="VOUCHER">
+          <ScalarProperty Name="MAVOUCHER" ColumnName="MAVOUCHER" />
+          <ScalarProperty Name="MACODE" ColumnName="MACODE" />
+          <ScalarProperty Name="THOIGIANAPDUNG" ColumnName="THOIGIANAPDUNG" />
+          <ScalarProperty Name="DIEUKIEN" ColumnName="DIEUKIEN" />
+          <ScalarProperty Name="LOAIVOUCHER" ColumnName="LOAIVOUCHER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VOUCHER_NGANHHANG">
+      <EntityTypeMapping TypeName="shopeeModel.VOUCHER_NGANHHANG">
+        <MappingFragment StoreEntitySet="VOUCHER_NGANHHANG">
+          <ScalarProperty Name="MAVOUCHER" ColumnName="MAVOUCHER" />
+          <ScalarProperty Name="MANGANHHANG" ColumnName="MANGANHHANG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="LICHSUTHEODOIGIANHANG" TypeName="shopeeModel.LICHSUTHEODOIGIANHANG" StoreEntitySet="LICHSUTHEODOIGIANHANG">
+      <EndProperty Name="THANHVIEN">
+        <ScalarProperty Name="ID_THANHVIEN" ColumnName="ID_NGUOIMUA" />
+      </EndProperty>
+      <EndProperty Name="GIANHANG">
+        <ScalarProperty Name="MAGIANHANG" ColumnName="MAGIANHANG" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="VOUCHER_GIANHANG" TypeName="shopeeModel.VOUCHER_GIANHANG" StoreEntitySet="VOUCHER_GIANHANG">
+      <EndProperty Name="GIANHANG">
+        <ScalarProperty Name="MAGIANHANG" ColumnName="MAGIANHANG" />
+      </EndProperty>
+      <EndProperty Name="VOUCHER">
+        <ScalarProperty Name="MAVOUCHER" ColumnName="MAVOUCHER" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="VOUCHER_NGUOIDUNG" TypeName="shopeeModel.VOUCHER_NGUOIDUNG" StoreEntitySet="VOUCHER_NGUOIDUNG">
+      <EndProperty Name="THANHVIEN">
+        <ScalarProperty Name="ID_THANHVIEN" ColumnName="ID_NGUOIMUA" />
+      </EndProperty>
+      <EndProperty Name="VOUCHER">
+        <ScalarProperty Name="MAVOUCHER" ColumnName="MAVOUCHER" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

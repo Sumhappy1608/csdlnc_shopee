@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="shopeeModelStoreContainer" CdmEntityContainer="shopeeEntities">
+    <EntitySetMapping Name="DANHMUCs">
+      <EntityTypeMapping TypeName="shopeeModel.DANHMUC">
+        <MappingFragment StoreEntitySet="DANHMUC">
+          <ScalarProperty Name="MALOAI" ColumnName="MALOAI" />
+          <ScalarProperty Name="TENLOAI" ColumnName="TENLOAI" />
+          <ScalarProperty Name="CHITIETLOAI" ColumnName="CHITIETLOAI" />
+          <ScalarProperty Name="NGANHHANG" ColumnName="NGANHHANG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HANGHOAs">
+      <EntityTypeMapping TypeName="shopeeModel.HANGHOA">
+        <MappingFragment StoreEntitySet="HANGHOA">
+          <ScalarProperty Name="MAHANGHOA" ColumnName="MAHANGHOA" />
+          <ScalarProperty Name="TENHANGHOA" ColumnName="TENHANGHOA" />
+          <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+          <ScalarProperty Name="GIATHANH" ColumnName="GIATHANH" />
+          <ScalarProperty Name="SOLUONGTON" ColumnName="SOLUONGTON" />
+          <ScalarProperty Name="LOAIHANGHOA" ColumnName="LOAIHANGHOA" />
+          <ScalarProperty Name="HHFlag" ColumnName="HHFlag" />
+          <ScalarProperty Name="DANHGIA_HANGHOA" ColumnName="DANHGIA_HANGHOA" />
+          <ScalarProperty Name="THOIHANSUDUNG" ColumnName="THOIHANSUDUNG" />
+          <ScalarProperty Name="SOLUONGDABAN" ColumnName="SOLUONGDABAN" />
+          <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NGANHHANGs">
+      <EntityTypeMapping TypeName="shopeeModel.NGANHHANG">
+        <MappingFragment StoreEntitySet="NGANHHANG">
+          <ScalarProperty Name="MANGANHHANG" ColumnName="MANGANHHANG" />
+          <ScalarProperty Name="TENNGANHHANG" ColumnName="TENNGANHHANG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

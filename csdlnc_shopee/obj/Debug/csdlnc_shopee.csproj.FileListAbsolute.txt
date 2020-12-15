@@ -82,3 +82,7 @@ D:\Năm 3\Cơ sở dữ liệu nâng cao\csdlnc_shopee\csdlnc_shopee\obj\Debug\c
 D:\Năm 3\Cơ sở dữ liệu nâng cao\csdlnc_shopee\csdlnc_shopee\obj\Debug\csdlnc_shopee.csproj.CopyComplete
 D:\Năm 3\Cơ sở dữ liệu nâng cao\csdlnc_shopee\csdlnc_shopee\obj\Debug\csdlnc_shopee.dll
 D:\Năm 3\Cơ sở dữ liệu nâng cao\csdlnc_shopee\csdlnc_shopee\obj\Debug\csdlnc_shopee.pdb
+D:\Năm 3\Cơ sở dữ liệu nâng cao\csdlnc_shopee\csdlnc_shopee\bin\EntityFramework.dll
+D:\Năm 3\Cơ sở dữ liệu nâng cao\csdlnc_shopee\csdlnc_shopee\bin\EntityFramework.SqlServer.dll
+D:\Năm 3\Cơ sở dữ liệu nâng cao\csdlnc_shopee\csdlnc_shopee\bin\EntityFramework.xml
+D:\Năm 3\Cơ sở dữ liệu nâng cao\csdlnc_shopee\csdlnc_shopee\bin\EntityFramework.SqlServer.xml

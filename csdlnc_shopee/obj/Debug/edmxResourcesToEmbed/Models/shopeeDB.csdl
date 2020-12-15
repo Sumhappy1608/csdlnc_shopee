@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="shopeeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DANHMUC">
+    <Key>
+      <PropertyRef Name="MALOAI" />
+    </Key>
+    <Property Name="MALOAI" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TENLOAI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CHITIETLOAI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NGANHHANG" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="NGANHHANG1" Relationship="Self.FK_DANHMUC_NGANHHANG_NGANHHANG" FromRole="DANHMUC" ToRole="NGANHHANG" />
+    <NavigationProperty Name="HANGHOAs" Relationship="Self.FK_HANGHOA_DANHMUC_LOAIHANGHOA" FromRole="DANHMUC" ToRole="HANGHOA" />
+  </EntityType>
+  <EntityType Name="HANGHOA">
+    <Key>
+      <PropertyRef Name="MAHANGHOA" />
+    </Key>
+    <Property Name="MAHANGHOA" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TENHANGHOA" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="GIATHANH" Type="Double" Nullable="false" />
+    <Property Name="SOLUONGTON" Type="Int32" Nullable="false" />
+    <Property Name="LOAIHANGHOA" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="HHFlag" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="DANHGIA_HANGHOA" Type="Double" />
+    <Property Name="THOIHANSUDUNG" Type="DateTime" Precision="3" />
+    <Property Name="SOLUONGDABAN" Type="Int32" />
+    <Property Name="HINHANH" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DANHMUC" Relationship="Self.FK_HANGHOA_DANHMUC_LOAIHANGHOA" FromRole="HANGHOA" ToRole="DANHMUC" />
+  </EntityType>
+  <EntityType Name="NGANHHANG">
+    <Key>
+      <PropertyRef Name="MANGANHHANG" />
+    </Key>
+    <Property Name="MANGANHHANG" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TENNGANHHANG" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="DANHMUCs" Relationship="Self.FK_DANHMUC_NGANHHANG_NGANHHANG" FromRole="NGANHHANG" ToRole="DANHMUC" />
+  </EntityType>
+  <Association Name="FK_DANHMUC_NGANHHANG_NGANHHANG">
+    <End Role="NGANHHANG" Type="Self.NGANHHANG" Multiplicity="0..1" />
+    <End Role="DANHMUC" Type="Self.DANHMUC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NGANHHANG">
+        <PropertyRef Name="MANGANHHANG" />
+      </Principal>
+      <Dependent Role="DANHMUC">
+        <PropertyRef Name="NGANHHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HANGHOA_DANHMUC_LOAIHANGHOA">
+    <End Role="DANHMUC" Type="Self.DANHMUC" Multiplicity="1" />
+    <End Role="HANGHOA" Type="Self.HANGHOA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DANHMUC">
+        <PropertyRef Name="MALOAI" />
+      </Principal>
+      <Dependent Role="HANGHOA">
+        <PropertyRef Name="LOAIHANGHOA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="shopeeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DANHMUCs" EntityType="Self.DANHMUC" />
+    <EntitySet Name="HANGHOAs" EntityType="Self.HANGHOA" />
+    <EntitySet Name="NGANHHANGs" EntityType="Self.NGANHHANG" />
+    <AssociationSet Name="FK_DANHMUC_NGANHHANG_NGANHHANG" Association="Self.FK_DANHMUC_NGANHHANG_NGANHHANG">
+      <End Role="NGANHHANG" EntitySet="NGANHHANGs" />
+      <End Role="DANHMUC" EntitySet="DANHMUCs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HANGHOA_DANHMUC_LOAIHANGHOA" Association="Self.FK_HANGHOA_DANHMUC_LOAIHANGHOA">
+      <End Role="DANHMUC" EntitySet="DANHMUCs" />
+      <End Role="HANGHOA" EntitySet="HANGHOAs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

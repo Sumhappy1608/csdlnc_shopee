@@ -1,0 +1,11 @@
+D:\Năm 3\Cơ sở dữ liệu nâng cao\csdlnc_shopee\Model\bin\Debug\Model.dll.config
+D:\Năm 3\Cơ sở dữ liệu nâng cao\csdlnc_shopee\Model\bin\Debug\Model.dll
+D:\Năm 3\Cơ sở dữ liệu nâng cao\csdlnc_shopee\Model\bin\Debug\Model.pdb
+D:\Năm 3\Cơ sở dữ liệu nâng cao\csdlnc_shopee\Model\bin\Debug\EntityFramework.dll
+D:\Năm 3\Cơ sở dữ liệu nâng cao\csdlnc_shopee\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\Năm 3\Cơ sở dữ liệu nâng cao\csdlnc_shopee\Model\bin\Debug\EntityFramework.xml
+D:\Năm 3\Cơ sở dữ liệu nâng cao\csdlnc_shopee\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\Năm 3\Cơ sở dữ liệu nâng cao\csdlnc_shopee\Model\obj\Debug\Model.csprojAssemblyReference.cache
+D:\Năm 3\Cơ sở dữ liệu nâng cao\csdlnc_shopee\Model\obj\Debug\Model.csproj.CopyComplete
+D:\Năm 3\Cơ sở dữ liệu nâng cao\csdlnc_shopee\Model\obj\Debug\Model.dll
+D:\Năm 3\Cơ sở dữ liệu nâng cao\csdlnc_shopee\Model\obj\Debug\Model.pdb
