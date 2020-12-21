@@ -1,0 +1,14 @@
+﻿@model List<csdlnc_shopee.Models.DANHMUC>
+
+<div class="nav-main">
+    <!-- Tab Nav -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ALL" role="tab">ALL</a></li>
+        @foreach (var category in Model)
+        {
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#@category.TENLOAI" role="tab">@category.TENLOAI</a></li>
+        }
+    </ul>
+    <!--/ End Tab Nav -->
+</div>
+
