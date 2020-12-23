@@ -12,20 +12,17 @@ namespace csdlnc_shopee.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class NGANHHANG
+    public partial class LOAIVOUCHER
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NGANHHANG()
+        public LOAIVOUCHER()
         {
-            this.DANHMUCs = new HashSet<DANHMUC>();
             this.VOUCHERs = new HashSet<VOUCHER>();
         }
     
-        public string MANGANHHANG { get; set; }
-        public string TENNGANHHANG { get; set; }
+        public string MALOAIVOUCHER { get; set; }
+        public string TENLOAIVOUCHER { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DANHMUC> DANHMUCs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VOUCHER> VOUCHERs { get; set; }
     }

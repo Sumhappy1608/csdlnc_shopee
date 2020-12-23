@@ -12,21 +12,20 @@ namespace csdlnc_shopee.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class NGANHHANG
+    public partial class DONVIVANCHUYEN
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NGANHHANG()
+        public DONVIVANCHUYEN()
         {
-            this.DANHMUCs = new HashSet<DANHMUC>();
-            this.VOUCHERs = new HashSet<VOUCHER>();
+            this.DONMUAs = new HashSet<DONMUA>();
         }
     
-        public string MANGANHHANG { get; set; }
-        public string TENNGANHHANG { get; set; }
+        public string MADONVI { get; set; }
+        public string TENDONVI { get; set; }
+        public int DIENTHOAI_DVVC { get; set; }
+        public string EMAIL_DVVC { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DANHMUC> DANHMUCs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VOUCHER> VOUCHERs { get; set; }
+        public virtual ICollection<DONMUA> DONMUAs { get; set; }
     }
 }

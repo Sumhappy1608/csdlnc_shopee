@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="shopeeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="shopeeModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="DANHMUC">
     <Key>
       <PropertyRef Name="MALOAI" />
@@ -7,7 +7,7 @@
     <Property Name="MALOAI" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="TENLOAI" Type="nvarchar" MaxLength="30" Nullable="false" />
     <Property Name="CHITIETLOAI" Type="nvarchar(max)" />
-    <Property Name="NGANHHANG" Type="char" MaxLength="10" />
+    <Property Name="NGANHHANG" Type="char" MaxLength="10" Nullable="false" />
   </EntityType>
   <EntityType Name="DATHANG">
     <Key>
@@ -21,15 +21,12 @@
   <EntityType Name="DONHANG">
     <Key>
       <PropertyRef Name="ID_DONHANG" />
-      <PropertyRef Name="MAGIANHANG" />
       <PropertyRef Name="MASANPHAM" />
-      <PropertyRef Name="SOLUONG" />
     </Key>
     <Property Name="ID_DONHANG" Type="char" MaxLength="20" Nullable="false" />
-    <Property Name="MAGIANHANG" Type="char" MaxLength="15" Nullable="false" />
     <Property Name="MASANPHAM" Type="char" MaxLength="15" Nullable="false" />
     <Property Name="SOLUONG" Type="int" Nullable="false" />
-    <Property Name="DONGIA" Type="float" />
+    <Property Name="DONGIA" Type="float" Nullable="false" />
   </EntityType>
   <EntityType Name="DONMUA">
     <Key>
@@ -54,22 +51,20 @@
     </Key>
     <Property Name="MAGIANHANG" Type="char" MaxLength="15" Nullable="false" />
     <Property Name="TENGIANHANG" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="DANHGIA_GIANHANG" Type="float" />
-    <Property Name="LuongNguoiTheoDoi" Type="int" />
+    <Property Name="DANHGIA_GIANHANG" Type="float" Nullable="false" />
+    <Property Name="LuongNguoiTheoDoi" Type="int" Nullable="false" />
     <Property Name="ID_NGUOIBAN" Type="char" MaxLength="15" Nullable="false" />
     <Property Name="LoaiGianHang" Type="char" MaxLength="6" Nullable="false" />
   </EntityType>
   <EntityType Name="GIOHANG">
     <Key>
       <PropertyRef Name="ID_NGUOIMUA" />
-      <PropertyRef Name="MAGIANHANG" />
       <PropertyRef Name="MAHANGHOA" />
-      <PropertyRef Name="SOLUONG" />
     </Key>
     <Property Name="ID_NGUOIMUA" Type="char" MaxLength="15" Nullable="false" />
-    <Property Name="MAGIANHANG" Type="char" MaxLength="15" Nullable="false" />
     <Property Name="MAHANGHOA" Type="char" MaxLength="15" Nullable="false" />
     <Property Name="SOLUONG" Type="int" Nullable="false" />
+    <Property Name="NGAYTHEM" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="HANGHOA">
     <Key>
@@ -82,9 +77,11 @@
     <Property Name="SOLUONGTON" Type="int" Nullable="false" />
     <Property Name="LOAIHANGHOA" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="HHFlag" Type="char" MaxLength="3" Nullable="false" />
-    <Property Name="DANHGIA_HANGHOA" Type="float" />
+    <Property Name="DANHGIA_HANGHOA" Type="float" Nullable="false" />
     <Property Name="THOIHANSUDUNG" Type="datetime" />
-    <Property Name="SOLUONGDABAN" Type="int" />
+    <Property Name="SOLUONGDABAN" Type="int" Nullable="false" />
+    <Property Name="MAGIANHANG" Type="char" MaxLength="15" />
+    <Property Name="NGAYDANG" Type="datetime" />
     <Property Name="HINHANH" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="LICHSUDANHGIAGIANHANG">
@@ -98,6 +95,18 @@
     <Property Name="NGAYDANHGIA_GIANHANG" Type="datetime" Nullable="false" />
     <Property Name="SOSAO_GIANHANG" Type="int" Nullable="false" />
     <Property Name="NHANXET_GIANHANG" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="LICHSUDANHGIAHANGHOA">
+    <Key>
+      <PropertyRef Name="MAHANGHOA" />
+      <PropertyRef Name="ID_NGUOIMUA" />
+      <PropertyRef Name="NGAYDANHGIA_HANGHOA" />
+    </Key>
+    <Property Name="MAHANGHOA" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="ID_NGUOIMUA" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="NGAYDANHGIA_HANGHOA" Type="datetime" Nullable="false" />
+    <Property Name="SOSAO_HANGHOA" Type="int" Nullable="false" />
+    <Property Name="NHANXET_HANGHOA" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="LICHSUTHEODOIGIANHANG">
     <Key>
@@ -131,6 +140,16 @@
     <Property Name="MANGANHHANG" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="TENNGANHHANG" Type="nvarchar" MaxLength="30" Nullable="false" />
   </EntityType>
+  <EntityType Name="TAIKHOANDANGNHAP">
+    <Key>
+      <PropertyRef Name="ID_TAIKHOAN" />
+    </Key>
+    <Property Name="ID_TAIKHOAN" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="TENDANGNHAP" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="MATKHAU" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ID_THANHVIEN" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="LOAITAIKHOAN" Type="char" MaxLength="5" Nullable="false" />
+  </EntityType>
   <EntityType Name="THANHTOAN">
     <Key>
       <PropertyRef Name="SO_THANHTOAN" />
@@ -139,7 +158,7 @@
     <Property Name="NGAYTHANHTOAN" Type="datetime" Nullable="false" />
     <Property Name="ID_DONHANG" Type="char" MaxLength="20" Nullable="false" />
     <Property Name="SOTIENTT" Type="float" Nullable="false" />
-    <Property Name="UUDAI" Type="nvarchar" MaxLength="50" />
+    <Property Name="UUDAI" Type="char" MaxLength="20" />
     <Property Name="LOAITHANHTOAN" Type="char" MaxLength="5" Nullable="false" />
     <Property Name="HOANTIEN" Type="float" />
     <Property Name="LOAITTONLINE" Type="char" MaxLength="5" />
@@ -152,8 +171,8 @@
     <Property Name="EMAIL_TV" Type="varchar" MaxLength="30" />
     <Property Name="DIENTHOAI_TV" Type="int" Nullable="false" />
     <Property Name="DIACHI_TV" Type="nvarchar(max)" />
-    <Property Name="NGUOIBANFLAG" Type="int" />
-    <Property Name="NGUOIMUAFLAG" Type="int" />
+    <Property Name="NGUOIBANFLAG" Type="int" Nullable="false" />
+    <Property Name="NGUOIMUAFLAG" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="THONGTINDONHANG">
     <Key>
@@ -180,7 +199,7 @@
     <Property Name="MAVOUCHER" Type="char" MaxLength="20" Nullable="false" />
     <Property Name="MACODE" Type="char" MaxLength="30" Nullable="false" />
     <Property Name="THOIGIANAPDUNG" Type="datetime" Nullable="false" />
-    <Property Name="DIEUKIEN" Type="nvarchar(max)" />
+    <Property Name="DIEUKIEN" Type="nvarchar(max)" Nullable="false" />
     <Property Name="LOAIVOUCHER" Type="char" MaxLength="10" Nullable="false" />
   </EntityType>
   <EntityType Name="VOUCHER_GIANHANG">
@@ -197,7 +216,7 @@
       <PropertyRef Name="MANGANHHANG" />
     </Key>
     <Property Name="MAVOUCHER" Type="char" MaxLength="20" Nullable="false" />
-    <Property Name="MANGANHHANG" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="MANGANHHANG" Type="char" MaxLength="10" Nullable="false" />
   </EntityType>
   <EntityType Name="VOUCHER_NGUOIDUNG">
     <Key>
@@ -207,8 +226,20 @@
     <Property Name="MAVOUCHER" Type="char" MaxLength="20" Nullable="false" />
     <Property Name="ID_NGUOIMUA" Type="char" MaxLength="15" Nullable="false" />
   </EntityType>
+  <Association Name="FK__HANGHOA__MAGIANH__3C69FB99">
+    <End Role="GIANHANG" Type="Self.GIANHANG" Multiplicity="0..1" />
+    <End Role="HANGHOA" Type="Self.HANGHOA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GIANHANG">
+        <PropertyRef Name="MAGIANHANG" />
+      </Principal>
+      <Dependent Role="HANGHOA">
+        <PropertyRef Name="MAGIANHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_DANHMUC_NGANHHANG_NGANHHANG">
-    <End Role="NGANHHANG" Type="Self.NGANHHANG" Multiplicity="0..1" />
+    <End Role="NGANHHANG" Type="Self.NGANHHANG" Multiplicity="1" />
     <End Role="DANHMUC" Type="Self.DANHMUC" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="NGANHHANG">
@@ -228,6 +259,18 @@
       </Principal>
       <Dependent Role="DATHANG">
         <PropertyRef Name="NGUOIMUA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DONHANG_HANGHOA">
+    <End Role="HANGHOA" Type="Self.HANGHOA" Multiplicity="1" />
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HANGHOA">
+        <PropertyRef Name="MAHANGHOA" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="MASANPHAM" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -279,19 +322,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_GIOHANG_GIANHANG_MAGIANHANG">
-    <End Role="GIANHANG" Type="Self.GIANHANG" Multiplicity="1" />
-    <End Role="GIOHANG" Type="Self.GIOHANG" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="GIANHANG">
-        <PropertyRef Name="MAGIANHANG" />
-      </Principal>
-      <Dependent Role="GIOHANG">
-        <PropertyRef Name="MAGIANHANG" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_GIOHANG_HANGHOA_MAHANGHOA">
+  <Association Name="FK_GIOHANG_HANGHOA">
     <End Role="HANGHOA" Type="Self.HANGHOA" Multiplicity="1" />
     <End Role="GIOHANG" Type="Self.GIOHANG" Multiplicity="*" />
     <ReferentialConstraint>
@@ -351,6 +382,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_LICHSUDANHGIAHANGHOA_HANGHOA_MAHANGHOA">
+    <End Role="HANGHOA" Type="Self.HANGHOA" Multiplicity="1" />
+    <End Role="LICHSUDANHGIAHANGHOA" Type="Self.LICHSUDANHGIAHANGHOA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HANGHOA">
+        <PropertyRef Name="MAHANGHOA" />
+      </Principal>
+      <Dependent Role="LICHSUDANHGIAHANGHOA">
+        <PropertyRef Name="MAHANGHOA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LICHSUDANHGIAHANGHOA1_THANHVIEN_ID_NGUOIMUA">
+    <End Role="THANHVIEN" Type="Self.THANHVIEN" Multiplicity="1" />
+    <End Role="LICHSUDANHGIAHANGHOA" Type="Self.LICHSUDANHGIAHANGHOA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THANHVIEN">
+        <PropertyRef Name="ID_THANHVIEN" />
+      </Principal>
+      <Dependent Role="LICHSUDANHGIAHANGHOA">
+        <PropertyRef Name="ID_NGUOIMUA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_LICHSUTHEODOIGIANHANG_GIANHANG_ID_NGUOIMUA">
     <End Role="THANHVIEN" Type="Self.THANHVIEN" Multiplicity="1" />
     <End Role="LICHSUTHEODOIGIANHANG" Type="Self.LICHSUTHEODOIGIANHANG" Multiplicity="*" />
@@ -396,6 +451,42 @@
       </Principal>
       <Dependent Role="LICHSUXEMHANGHOA">
         <PropertyRef Name="ID_TAIKHOAN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TAIKHOAN_THANHVIEN_ID_THANHVIEN">
+    <End Role="THANHVIEN" Type="Self.THANHVIEN" Multiplicity="1" />
+    <End Role="TAIKHOANDANGNHAP" Type="Self.TAIKHOANDANGNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THANHVIEN">
+        <PropertyRef Name="ID_THANHVIEN" />
+      </Principal>
+      <Dependent Role="TAIKHOANDANGNHAP">
+        <PropertyRef Name="ID_THANHVIEN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_THANHTOAN_DONHANG">
+    <End Role="DATHANG" Type="Self.DATHANG" Multiplicity="1" />
+    <End Role="THANHTOAN" Type="Self.THANHTOAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATHANG">
+        <PropertyRef Name="ID_DONHANG" />
+      </Principal>
+      <Dependent Role="THANHTOAN">
+        <PropertyRef Name="ID_DONHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_THANHTOAN_VOUCHER">
+    <End Role="VOUCHER" Type="Self.VOUCHER" Multiplicity="0..1" />
+    <End Role="THANHTOAN" Type="Self.THANHTOAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VOUCHER">
+        <PropertyRef Name="MAVOUCHER" />
+      </Principal>
+      <Dependent Role="THANHTOAN">
+        <PropertyRef Name="UUDAI" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -459,6 +550,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_VOUCHER_NGANHHANG_NGANHHANG_MANGANHHANG">
+    <End Role="NGANHHANG" Type="Self.NGANHHANG" Multiplicity="1" />
+    <End Role="VOUCHER_NGANHHANG" Type="Self.VOUCHER_NGANHHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NGANHHANG">
+        <PropertyRef Name="MANGANHHANG" />
+      </Principal>
+      <Dependent Role="VOUCHER_NGANHHANG">
+        <PropertyRef Name="MANGANHHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_VOUCHER_NGANHHANG_VOUCHER_MAVOUCHER">
     <End Role="VOUCHER" Type="Self.VOUCHER" Multiplicity="1" />
     <End Role="VOUCHER_NGANHHANG" Type="Self.VOUCHER_NGANHHANG" Multiplicity="*" />
@@ -495,7 +598,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="shopeeModelStoreContainer">
+  <EntityContainer Name="shopeeModel1StoreContainer">
     <EntitySet Name="DANHMUC" EntityType="Self.DANHMUC" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DATHANG" EntityType="Self.DATHANG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DONHANG" EntityType="Self.DONHANG" Schema="dbo" store:Type="Tables" />
@@ -505,10 +608,12 @@
     <EntitySet Name="GIOHANG" EntityType="Self.GIOHANG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HANGHOA" EntityType="Self.HANGHOA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LICHSUDANHGIAGIANHANG" EntityType="Self.LICHSUDANHGIAGIANHANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LICHSUDANHGIAHANGHOA" EntityType="Self.LICHSUDANHGIAHANGHOA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LICHSUTHEODOIGIANHANG" EntityType="Self.LICHSUTHEODOIGIANHANG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LICHSUXEMHANGHOA" EntityType="Self.LICHSUXEMHANGHOA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LOAIVOUCHER" EntityType="Self.LOAIVOUCHER" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NGANHHANG" EntityType="Self.NGANHHANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TAIKHOANDANGNHAP" EntityType="Self.TAIKHOANDANGNHAP" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="THANHTOAN" EntityType="Self.THANHTOAN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="THANHVIEN" EntityType="Self.THANHVIEN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="THONGTINDONHANG" EntityType="Self.THONGTINDONHANG" Schema="dbo" store:Type="Tables" />
@@ -517,6 +622,10 @@
     <EntitySet Name="VOUCHER_GIANHANG" EntityType="Self.VOUCHER_GIANHANG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VOUCHER_NGANHHANG" EntityType="Self.VOUCHER_NGANHHANG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VOUCHER_NGUOIDUNG" EntityType="Self.VOUCHER_NGUOIDUNG" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__HANGHOA__MAGIANH__3C69FB99" Association="Self.FK__HANGHOA__MAGIANH__3C69FB99">
+      <End Role="GIANHANG" EntitySet="GIANHANG" />
+      <End Role="HANGHOA" EntitySet="HANGHOA" />
+    </AssociationSet>
     <AssociationSet Name="FK_DANHMUC_NGANHHANG_NGANHHANG" Association="Self.FK_DANHMUC_NGANHHANG_NGANHHANG">
       <End Role="NGANHHANG" EntitySet="NGANHHANG" />
       <End Role="DANHMUC" EntitySet="DANHMUC" />
@@ -524,6 +633,10 @@
     <AssociationSet Name="FK_DATHANG_THANHVIEN_NGUOIMUA" Association="Self.FK_DATHANG_THANHVIEN_NGUOIMUA">
       <End Role="THANHVIEN" EntitySet="THANHVIEN" />
       <End Role="DATHANG" EntitySet="DATHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DONHANG_HANGHOA" Association="Self.FK_DONHANG_HANGHOA">
+      <End Role="HANGHOA" EntitySet="HANGHOA" />
+      <End Role="DONHANG" EntitySet="DONHANG" />
     </AssociationSet>
     <AssociationSet Name="FK_DONMUA_DATHANG_ID_DONHANG" Association="Self.FK_DONMUA_DATHANG_ID_DONHANG">
       <End Role="DATHANG" EntitySet="DATHANG" />
@@ -541,11 +654,7 @@
       <End Role="THANHVIEN" EntitySet="THANHVIEN" />
       <End Role="GIANHANG" EntitySet="GIANHANG" />
     </AssociationSet>
-    <AssociationSet Name="FK_GIOHANG_GIANHANG_MAGIANHANG" Association="Self.FK_GIOHANG_GIANHANG_MAGIANHANG">
-      <End Role="GIANHANG" EntitySet="GIANHANG" />
-      <End Role="GIOHANG" EntitySet="GIOHANG" />
-    </AssociationSet>
-    <AssociationSet Name="FK_GIOHANG_HANGHOA_MAHANGHOA" Association="Self.FK_GIOHANG_HANGHOA_MAHANGHOA">
+    <AssociationSet Name="FK_GIOHANG_HANGHOA" Association="Self.FK_GIOHANG_HANGHOA">
       <End Role="HANGHOA" EntitySet="HANGHOA" />
       <End Role="GIOHANG" EntitySet="GIOHANG" />
     </AssociationSet>
@@ -565,6 +674,14 @@
       <End Role="THANHVIEN" EntitySet="THANHVIEN" />
       <End Role="LICHSUDANHGIAGIANHANG" EntitySet="LICHSUDANHGIAGIANHANG" />
     </AssociationSet>
+    <AssociationSet Name="FK_LICHSUDANHGIAHANGHOA_HANGHOA_MAHANGHOA" Association="Self.FK_LICHSUDANHGIAHANGHOA_HANGHOA_MAHANGHOA">
+      <End Role="HANGHOA" EntitySet="HANGHOA" />
+      <End Role="LICHSUDANHGIAHANGHOA" EntitySet="LICHSUDANHGIAHANGHOA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LICHSUDANHGIAHANGHOA1_THANHVIEN_ID_NGUOIMUA" Association="Self.FK_LICHSUDANHGIAHANGHOA1_THANHVIEN_ID_NGUOIMUA">
+      <End Role="THANHVIEN" EntitySet="THANHVIEN" />
+      <End Role="LICHSUDANHGIAHANGHOA" EntitySet="LICHSUDANHGIAHANGHOA" />
+    </AssociationSet>
     <AssociationSet Name="FK_LICHSUTHEODOIGIANHANG_GIANHANG_ID_NGUOIMUA" Association="Self.FK_LICHSUTHEODOIGIANHANG_GIANHANG_ID_NGUOIMUA">
       <End Role="THANHVIEN" EntitySet="THANHVIEN" />
       <End Role="LICHSUTHEODOIGIANHANG" EntitySet="LICHSUTHEODOIGIANHANG" />
@@ -580,6 +697,18 @@
     <AssociationSet Name="FK_LICHSUXEMHANGHOA_THANHVIEN_ID_TAIKHOAN" Association="Self.FK_LICHSUXEMHANGHOA_THANHVIEN_ID_TAIKHOAN">
       <End Role="THANHVIEN" EntitySet="THANHVIEN" />
       <End Role="LICHSUXEMHANGHOA" EntitySet="LICHSUXEMHANGHOA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TAIKHOAN_THANHVIEN_ID_THANHVIEN" Association="Self.FK_TAIKHOAN_THANHVIEN_ID_THANHVIEN">
+      <End Role="THANHVIEN" EntitySet="THANHVIEN" />
+      <End Role="TAIKHOANDANGNHAP" EntitySet="TAIKHOANDANGNHAP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_THANHTOAN_DONHANG" Association="Self.FK_THANHTOAN_DONHANG">
+      <End Role="DATHANG" EntitySet="DATHANG" />
+      <End Role="THANHTOAN" EntitySet="THANHTOAN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_THANHTOAN_VOUCHER" Association="Self.FK_THANHTOAN_VOUCHER">
+      <End Role="VOUCHER" EntitySet="VOUCHER" />
+      <End Role="THANHTOAN" EntitySet="THANHTOAN" />
     </AssociationSet>
     <AssociationSet Name="FK_THONGTINDONHANG_DATHANG_ID_DONHANG" Association="Self.FK_THONGTINDONHANG_DATHANG_ID_DONHANG">
       <End Role="DATHANG" EntitySet="DATHANG" />
@@ -600,6 +729,10 @@
     <AssociationSet Name="FK_VOUCHER_LOAIVOUCHER_LOAIVOUCHER" Association="Self.FK_VOUCHER_LOAIVOUCHER_LOAIVOUCHER">
       <End Role="LOAIVOUCHER" EntitySet="LOAIVOUCHER" />
       <End Role="VOUCHER" EntitySet="VOUCHER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VOUCHER_NGANHHANG_NGANHHANG_MANGANHHANG" Association="Self.FK_VOUCHER_NGANHHANG_NGANHHANG_MANGANHHANG">
+      <End Role="NGANHHANG" EntitySet="NGANHHANG" />
+      <End Role="VOUCHER_NGANHHANG" EntitySet="VOUCHER_NGANHHANG" />
     </AssociationSet>
     <AssociationSet Name="FK_VOUCHER_NGANHHANG_VOUCHER_MAVOUCHER" Association="Self.FK_VOUCHER_NGANHHANG_VOUCHER_MAVOUCHER">
       <End Role="VOUCHER" EntitySet="VOUCHER" />

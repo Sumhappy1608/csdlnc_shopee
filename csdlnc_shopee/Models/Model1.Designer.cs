@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Năm 3\Cơ sở dữ liệu nâng cao\csdlnc_shopee\csdlnc_shopee\Models\shopeeDB.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Năm 3\csdlnc_shopee\csdlnc_shopee\Models\Model1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

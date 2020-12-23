@@ -121,7 +121,6 @@ D:\Năm 3\csdlnc_shopee\csdlnc_shopee\bin\System.Net.Http.Formatting.xml
 D:\Năm 3\csdlnc_shopee\csdlnc_shopee\bin\System.Web.Http.xml
 D:\Năm 3\csdlnc_shopee\csdlnc_shopee\bin\System.Web.Http.WebHost.xml
 D:\Năm 3\csdlnc_shopee\csdlnc_shopee\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Năm 3\csdlnc_shopee\csdlnc_shopee\obj\Debug\csdlnc_shopee.csprojAssemblyReference.cache
 D:\Năm 3\csdlnc_shopee\csdlnc_shopee\obj\Debug\csdlnc_shopee.csproj.CopyComplete
 D:\Năm 3\csdlnc_shopee\csdlnc_shopee\obj\Debug\csdlnc_shopee.dll
 D:\Năm 3\csdlnc_shopee\csdlnc_shopee\obj\Debug\csdlnc_shopee.pdb
@@ -174,3 +173,4 @@ D:\Năm 3\csdlnc_shopee\csdlnc_shopee\bin\roslyn\vbc.exe.config
 D:\Năm 3\csdlnc_shopee\csdlnc_shopee\bin\roslyn\vbc.rsp
 D:\Năm 3\csdlnc_shopee\csdlnc_shopee\bin\roslyn\VBCSCompiler.exe
 D:\Năm 3\csdlnc_shopee\csdlnc_shopee\bin\roslyn\VBCSCompiler.exe.config
+D:\Năm 3\csdlnc_shopee\csdlnc_shopee\obj\Debug\csdlnc_shopee.csprojAssemblyReference.cache

@@ -13,14 +13,15 @@ namespace csdlnc_shopee.Controllers
 
         public ActionResult Index()
         {
-            shopeeEntities db = new shopeeEntities();
+            shopeeEntities2 db = new shopeeEntities2();
             List<HANGHOA> pList = db.HANGHOAs.ToList();
             return View(pList);
+            
         }
 
         public ActionResult ProductMan()
         {
-            shopeeEntities db = new shopeeEntities();
+            shopeeEntities2 db = new shopeeEntities2();
             List<HANGHOA> pList = (from HH in db.HANGHOAs
                                    join DM in db.DANHMUCs on HH.LOAIHANGHOA equals DM.MALOAI
                                    where DM.TENLOAI == "MAN"
@@ -32,23 +33,24 @@ namespace csdlnc_shopee.Controllers
 
         public ActionResult ProductDetail(string productID)
         {
-            shopeeEntities db = new shopeeEntities();
+            shopeeEntities2 db = new shopeeEntities2();
             HANGHOA product = db.HANGHOAs.Where(x => x.MAHANGHOA == productID).SingleOrDefault();
             return View(product);
         }
 
         public ActionResult Categories()
         {
-            shopeeEntities db = new shopeeEntities();
+            shopeeEntities2 db = new shopeeEntities2();
             List<DANHMUC> cList = db.DANHMUCs.ToList();
             return PartialView("_Categories", cList);
         }
-        public ActionResult CategoryItem(string categoryID)
+        /*public ActionResult CategoryItem(string categoryID)
         {
             shopeeEntities db = new shopeeEntities();
             List<HANGHOA> cList = db.HANGHOAs.Where(x => x.LOAIHANGHOA == categoryID).ToList();
             return View(cList);
-        }
+        }*/
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

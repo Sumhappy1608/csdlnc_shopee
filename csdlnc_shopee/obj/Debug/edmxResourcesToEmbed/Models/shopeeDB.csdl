@@ -7,8 +7,8 @@
     <Property Name="MALOAI" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="TENLOAI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="CHITIETLOAI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="NGANHHANG" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-    <NavigationProperty Name="NGANHHANG1" Relationship="Self.FK_DANHMUC_NGANHHANG_NGANHHANG" FromRole="DANHMUC" ToRole="NGANHHANG" />
+    <Property Name="NGANHHANG" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="NGANHHANGs" Relationship="Self.FK_DANHMUC_NGANHHANG_NGANHHANG" FromRole="DANHMUC" ToRole="NGANHHANG" />
     <NavigationProperty Name="HANGHOAs" Relationship="Self.FK_HANGHOA_DANHMUC_LOAIHANGHOA" FromRole="DANHMUC" ToRole="HANGHOA" />
   </EntityType>
   <EntityType Name="HANGHOA">
@@ -22,11 +22,18 @@
     <Property Name="SOLUONGTON" Type="Int32" Nullable="false" />
     <Property Name="LOAIHANGHOA" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="HHFlag" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="DANHGIA_HANGHOA" Type="Double" />
+    <Property Name="DANHGIA_HANGHOA" Type="Double" Nullable="false" />
     <Property Name="THOIHANSUDUNG" Type="DateTime" Precision="3" />
-    <Property Name="SOLUONGDABAN" Type="Int32" />
+    <Property Name="SOLUONGDABAN" Type="Int32" Nullable="false" />
     <Property Name="HINHANH" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="DANHMUC" Relationship="Self.FK_HANGHOA_DANHMUC_LOAIHANGHOA" FromRole="HANGHOA" ToRole="DANHMUC" />
+    <NavigationProperty Name="LICHSUXEMHANGHOAs" Relationship="shopeeModel.FK_LICHSUXEMHANGHOA_HANGHOA_MAHANGHOA" FromRole="HANGHOA" ToRole="LICHSUXEMHANGHOA" />
+    <Property Name="MAGIANHANG" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="NGAYDANG" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="DONHANGs" Relationship="shopeeModel.FK_DONHANG_HANGHOA" FromRole="HANGHOA" ToRole="DONHANG" />
+    <NavigationProperty Name="GIANHANG" Relationship="shopeeModel.FK__HANGHOA__MAGIANH__3C69FB99" FromRole="HANGHOA" ToRole="GIANHANG" />
+    <NavigationProperty Name="GIOHANGs" Relationship="shopeeModel.FK_GIOHANG_HANGHOA" FromRole="HANGHOA" ToRole="GIOHANG" />
+    <NavigationProperty Name="LICHSUDANHGIAHANGHOAs" Relationship="shopeeModel.FK_LICHSUDANHGIAHANGHOA_HANGHOA_MAHANGHOA" FromRole="HANGHOA" ToRole="LICHSUDANHGIAHANGHOA" />
   </EntityType>
   <EntityType Name="NGANHHANG">
     <Key>
@@ -35,6 +42,7 @@
     <Property Name="MANGANHHANG" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="TENNGANHHANG" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="DANHMUCs" Relationship="Self.FK_DANHMUC_NGANHHANG_NGANHHANG" FromRole="NGANHHANG" ToRole="DANHMUC" />
+    <NavigationProperty Name="VOUCHERs" Relationship="shopeeModel.VOUCHER_NGANHHANG1" FromRole="NGANHHANG" ToRole="VOUCHER" />
   </EntityType>
   <Association Name="FK_DANHMUC_NGANHHANG_NGANHHANG">
     <End Role="NGANHHANG" Type="Self.NGANHHANG" Multiplicity="0..1" />
@@ -72,5 +80,685 @@
       <End Role="DANHMUC" EntitySet="DANHMUCs" />
       <End Role="HANGHOA" EntitySet="HANGHOAs" />
     </AssociationSet>
+    <EntitySet Name="DATHANGs" EntityType="shopeeModel.DATHANG" />
+    <EntitySet Name="DONHANGs" EntityType="shopeeModel.DONHANG" />
+    <EntitySet Name="DONMUAs" EntityType="shopeeModel.DONMUA" />
+    <EntitySet Name="DONVIVANCHUYENs" EntityType="shopeeModel.DONVIVANCHUYEN" />
+    <EntitySet Name="GIANHANGs" EntityType="shopeeModel.GIANHANG" />
+    <EntitySet Name="GIOHANGs" EntityType="shopeeModel.GIOHANG" />
+    <EntitySet Name="HANGHOA_GIANHANG" EntityType="shopeeModel.HANGHOA_GIANHANG" />
+    <EntitySet Name="LICHSUDANHGIAGIANHANGs" EntityType="shopeeModel.LICHSUDANHGIAGIANHANG" />
+    <EntitySet Name="LICHSUXEMHANGHOAs" EntityType="shopeeModel.LICHSUXEMHANGHOA" />
+    <EntitySet Name="LOAIVOUCHERs" EntityType="shopeeModel.LOAIVOUCHER" />
+    <EntitySet Name="sysdiagrams" EntityType="shopeeModel.sysdiagram" />
+    <EntitySet Name="THANHTOANs" EntityType="shopeeModel.THANHTOAN" />
+    <EntitySet Name="THANHVIENs" EntityType="shopeeModel.THANHVIEN" />
+    <EntitySet Name="THONGTINDONHANGs" EntityType="shopeeModel.THONGTINDONHANG" />
+    <EntitySet Name="THONGTINVANCHUYENs" EntityType="shopeeModel.THONGTINVANCHUYEN" />
+    <EntitySet Name="VOUCHERs" EntityType="shopeeModel.VOUCHER" />
+    <EntitySet Name="VOUCHER_NGANHHANG" EntityType="shopeeModel.VOUCHER_NGANHHANG" />
+    <AssociationSet Name="FK_DATHANG_THANHVIEN_NGUOIMUA" Association="shopeeModel.FK_DATHANG_THANHVIEN_NGUOIMUA">
+      <End Role="THANHVIEN" EntitySet="THANHVIENs" />
+      <End Role="DATHANG" EntitySet="DATHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DONMUA_DATHANG_ID_DONHANG" Association="shopeeModel.FK_DONMUA_DATHANG_ID_DONHANG">
+      <End Role="DATHANG" EntitySet="DATHANGs" />
+      <End Role="DONMUA" EntitySet="DONMUAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DONTHANG_DATHANG_ID_DONHANG" Association="shopeeModel.FK_DONTHANG_DATHANG_ID_DONHANG">
+      <End Role="DATHANG" EntitySet="DATHANGs" />
+      <End Role="DONHANG" EntitySet="DONHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_THONGTINDONHANG_DATHANG_ID_DONHANG" Association="shopeeModel.FK_THONGTINDONHANG_DATHANG_ID_DONHANG">
+      <End Role="DATHANG" EntitySet="DATHANGs" />
+      <End Role="THONGTINDONHANG" EntitySet="THONGTINDONHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DONHANG_GIANHANG_MAGIANHANG_MAHANGHOA" Association="shopeeModel.FK_DONHANG_GIANHANG_MAGIANHANG_MAHANGHOA">
+      <End Role="HANGHOA_GIANHANG" EntitySet="HANGHOA_GIANHANG" />
+      <End Role="DONHANG" EntitySet="DONHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DONMUA_DONVIVANCHUYEN_MADVVC" Association="shopeeModel.FK_DONMUA_DONVIVANCHUYEN_MADVVC">
+      <End Role="DONVIVANCHUYEN" EntitySet="DONVIVANCHUYENs" />
+      <End Role="DONMUA" EntitySet="DONMUAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_THONGTINVANCHUYEN_DONMUA_MADONVAN" Association="shopeeModel.FK_THONGTINVANCHUYEN_DONMUA_MADONVAN">
+      <End Role="DONMUA" EntitySet="DONMUAs" />
+      <End Role="THONGTINVANCHUYEN" EntitySet="THONGTINVANCHUYENs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GIANHANG_THANHVIEN_ID_NGUOIBAN" Association="shopeeModel.FK_GIANHANG_THANHVIEN_ID_NGUOIBAN">
+      <End Role="THANHVIEN" EntitySet="THANHVIENs" />
+      <End Role="GIANHANG" EntitySet="GIANHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LICHSUDANHGIAGIANHANG_GIANHANG_MAGIANHANG" Association="shopeeModel.FK_LICHSUDANHGIAGIANHANG_GIANHANG_MAGIANHANG">
+      <End Role="GIANHANG" EntitySet="GIANHANGs" />
+      <End Role="LICHSUDANHGIAGIANHANG" EntitySet="LICHSUDANHGIAGIANHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GIOHANG_HANGHOA_GIANHANG" Association="shopeeModel.FK_GIOHANG_HANGHOA_GIANHANG">
+      <End Role="HANGHOA_GIANHANG" EntitySet="HANGHOA_GIANHANG" />
+      <End Role="GIOHANG" EntitySet="GIOHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GIOHANG_THANHVIEN_ID_NGUOIMUA" Association="shopeeModel.FK_GIOHANG_THANHVIEN_ID_NGUOIMUA">
+      <End Role="THANHVIEN" EntitySet="THANHVIENs" />
+      <End Role="GIOHANG" EntitySet="GIOHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LICHSUXEMHANGHOA_HANGHOA_MAHANGHOA" Association="shopeeModel.FK_LICHSUXEMHANGHOA_HANGHOA_MAHANGHOA">
+      <End Role="HANGHOA" EntitySet="HANGHOAs" />
+      <End Role="LICHSUXEMHANGHOA" EntitySet="LICHSUXEMHANGHOAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LICHSUDANHGIAGIANHANG_THANHVIEN_ID_NGUOIMUA" Association="shopeeModel.FK_LICHSUDANHGIAGIANHANG_THANHVIEN_ID_NGUOIMUA">
+      <End Role="THANHVIEN" EntitySet="THANHVIENs" />
+      <End Role="LICHSUDANHGIAGIANHANG" EntitySet="LICHSUDANHGIAGIANHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LICHSUXEMHANGHOA_THANHVIEN_ID_TAIKHOAN" Association="shopeeModel.FK_LICHSUXEMHANGHOA_THANHVIEN_ID_TAIKHOAN">
+      <End Role="THANHVIEN" EntitySet="THANHVIENs" />
+      <End Role="LICHSUXEMHANGHOA" EntitySet="LICHSUXEMHANGHOAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VOUCHER_LOAIVOUCHER_LOAIVOUCHER" Association="shopeeModel.FK_VOUCHER_LOAIVOUCHER_LOAIVOUCHER">
+      <End Role="LOAIVOUCHER" EntitySet="LOAIVOUCHERs" />
+      <End Role="VOUCHER" EntitySet="VOUCHERs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VOUCHER_NGANHHANG_VOUCHER_MAVOUCHER" Association="shopeeModel.FK_VOUCHER_NGANHHANG_VOUCHER_MAVOUCHER">
+      <End Role="VOUCHER" EntitySet="VOUCHERs" />
+      <End Role="VOUCHER_NGANHHANG" EntitySet="VOUCHER_NGANHHANG" />
+    </AssociationSet>
+    <AssociationSet Name="LICHSUTHEODOIGIANHANG" Association="shopeeModel.LICHSUTHEODOIGIANHANG">
+      <End Role="THANHVIEN" EntitySet="THANHVIENs" />
+      <End Role="GIANHANG" EntitySet="GIANHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="VOUCHER_GIANHANG" Association="shopeeModel.VOUCHER_GIANHANG">
+      <End Role="GIANHANG" EntitySet="GIANHANGs" />
+      <End Role="VOUCHER" EntitySet="VOUCHERs" />
+    </AssociationSet>
+    <AssociationSet Name="VOUCHER_NGUOIDUNG" Association="shopeeModel.VOUCHER_NGUOIDUNG">
+      <End Role="THANHVIEN" EntitySet="THANHVIENs" />
+      <End Role="VOUCHER" EntitySet="VOUCHERs" />
+    </AssociationSet>
+    <EntitySet Name="LICHSUDANHGIAHANGHOAs" EntityType="shopeeModel.LICHSUDANHGIAHANGHOA" />
+    <EntitySet Name="TAIKHOANDANGNHAPs" EntityType="shopeeModel.TAIKHOANDANGNHAP" />
+    <AssociationSet Name="FK_THANHTOAN_DONHANG" Association="shopeeModel.FK_THANHTOAN_DONHANG">
+      <End Role="DATHANG" EntitySet="DATHANGs" />
+      <End Role="THANHTOAN" EntitySet="THANHTOANs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DONHANG_HANGHOA" Association="shopeeModel.FK_DONHANG_HANGHOA">
+      <End Role="HANGHOA" EntitySet="HANGHOAs" />
+      <End Role="DONHANG" EntitySet="DONHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HANGHOA__MAGIANH__3C69FB99" Association="shopeeModel.FK__HANGHOA__MAGIANH__3C69FB99">
+      <End Role="GIANHANG" EntitySet="GIANHANGs" />
+      <End Role="HANGHOA" EntitySet="HANGHOAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GIOHANG_HANGHOA" Association="shopeeModel.FK_GIOHANG_HANGHOA">
+      <End Role="HANGHOA" EntitySet="HANGHOAs" />
+      <End Role="GIOHANG" EntitySet="GIOHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LICHSUDANHGIAHANGHOA_HANGHOA_MAHANGHOA" Association="shopeeModel.FK_LICHSUDANHGIAHANGHOA_HANGHOA_MAHANGHOA">
+      <End Role="HANGHOA" EntitySet="HANGHOAs" />
+      <End Role="LICHSUDANHGIAHANGHOA" EntitySet="LICHSUDANHGIAHANGHOAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LICHSUDANHGIAHANGHOA1_THANHVIEN_ID_NGUOIMUA" Association="shopeeModel.FK_LICHSUDANHGIAHANGHOA1_THANHVIEN_ID_NGUOIMUA">
+      <End Role="THANHVIEN" EntitySet="THANHVIENs" />
+      <End Role="LICHSUDANHGIAHANGHOA" EntitySet="LICHSUDANHGIAHANGHOAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TAIKHOAN_THANHVIEN_ID_THANHVIEN" Association="shopeeModel.FK_TAIKHOAN_THANHVIEN_ID_THANHVIEN">
+      <End Role="THANHVIEN" EntitySet="THANHVIENs" />
+      <End Role="TAIKHOANDANGNHAP" EntitySet="TAIKHOANDANGNHAPs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_THANHTOAN_VOUCHER" Association="shopeeModel.FK_THANHTOAN_VOUCHER">
+      <End Role="VOUCHER" EntitySet="VOUCHERs" />
+      <End Role="THANHTOAN" EntitySet="THANHTOANs" />
+    </AssociationSet>
+    <AssociationSet Name="VOUCHER_NGANHHANG1" Association="shopeeModel.VOUCHER_NGANHHANG1">
+      <End Role="NGANHHANG" EntitySet="NGANHHANGs" />
+      <End Role="VOUCHER" EntitySet="VOUCHERs" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="DATHANG">
+    <Key>
+      <PropertyRef Name="ID_DONHANG" />
+    </Key>
+    <Property Name="ID_DONHANG" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="NGUOIMUA" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="NGAYDAT" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TONGTIEN" Type="Double" Nullable="false" />
+    <NavigationProperty Name="THANHVIEN" Relationship="shopeeModel.FK_DATHANG_THANHVIEN_NGUOIMUA" FromRole="DATHANG" ToRole="THANHVIEN" />
+    <NavigationProperty Name="DONMUAs" Relationship="shopeeModel.FK_DONMUA_DATHANG_ID_DONHANG" FromRole="DATHANG" ToRole="DONMUA" />
+    <NavigationProperty Name="DONHANGs" Relationship="shopeeModel.FK_DONTHANG_DATHANG_ID_DONHANG" FromRole="DATHANG" ToRole="DONHANG" />
+    <NavigationProperty Name="THONGTINDONHANGs" Relationship="shopeeModel.FK_THONGTINDONHANG_DATHANG_ID_DONHANG" FromRole="DATHANG" ToRole="THONGTINDONHANG" />
+    <NavigationProperty Name="THANHTOANs" Relationship="shopeeModel.FK_THANHTOAN_DONHANG" FromRole="DATHANG" ToRole="THANHTOAN" />
+  </EntityType>
+  <EntityType Name="DONHANG">
+    <Key>
+      <PropertyRef Name="ID_DONHANG" />
+      <PropertyRef Name="MAGIANHANG" />
+      <PropertyRef Name="MASANPHAM" />
+    </Key>
+    <Property Name="ID_DONHANG" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="MAGIANHANG" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="MASANPHAM" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+    <Property Name="DONGIA" Type="Double" Nullable="false" />
+    <NavigationProperty Name="DATHANG" Relationship="shopeeModel.FK_DONTHANG_DATHANG_ID_DONHANG" FromRole="DONHANG" ToRole="DATHANG" />
+    <NavigationProperty Name="HANGHOA_GIANHANG" Relationship="shopeeModel.FK_DONHANG_GIANHANG_MAGIANHANG_MAHANGHOA" FromRole="DONHANG" ToRole="HANGHOA_GIANHANG" />
+    <NavigationProperty Name="HANGHOA" Relationship="shopeeModel.FK_DONHANG_HANGHOA" FromRole="DONHANG" ToRole="HANGHOA" />
+  </EntityType>
+  <EntityType Name="DONMUA">
+    <Key>
+      <PropertyRef Name="MADONVAN" />
+    </Key>
+    <Property Name="MADONVAN" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="MADVVC" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="ID_DONHANG" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="DATHANG" Relationship="shopeeModel.FK_DONMUA_DATHANG_ID_DONHANG" FromRole="DONMUA" ToRole="DATHANG" />
+    <NavigationProperty Name="DONVIVANCHUYEN" Relationship="shopeeModel.FK_DONMUA_DONVIVANCHUYEN_MADVVC" FromRole="DONMUA" ToRole="DONVIVANCHUYEN" />
+    <NavigationProperty Name="THONGTINVANCHUYENs" Relationship="shopeeModel.FK_THONGTINVANCHUYEN_DONMUA_MADONVAN" FromRole="DONMUA" ToRole="THONGTINVANCHUYEN" />
+  </EntityType>
+  <EntityType Name="DONVIVANCHUYEN">
+    <Key>
+      <PropertyRef Name="MADONVI" />
+    </Key>
+    <Property Name="MADONVI" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="TENDONVI" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="DIENTHOAI_DVVC" Type="Int32" Nullable="false" />
+    <Property Name="EMAIL_DVVC" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DONMUAs" Relationship="shopeeModel.FK_DONMUA_DONVIVANCHUYEN_MADVVC" FromRole="DONVIVANCHUYEN" ToRole="DONMUA" />
+  </EntityType>
+  <EntityType Name="GIANHANG">
+    <Key>
+      <PropertyRef Name="MAGIANHANG" />
+    </Key>
+    <Property Name="MAGIANHANG" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="TENGIANHANG" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DANHGIA_GIANHANG" Type="Double" Nullable="false" />
+    <Property Name="LuongNguoiTheoDoi" Type="Int32" Nullable="false" />
+    <Property Name="ID_NGUOIBAN" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="LoaiGianHang" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="THANHVIEN" Relationship="shopeeModel.FK_GIANHANG_THANHVIEN_ID_NGUOIBAN" FromRole="GIANHANG" ToRole="THANHVIEN" />
+    <NavigationProperty Name="LICHSUDANHGIAGIANHANGs" Relationship="shopeeModel.FK_LICHSUDANHGIAGIANHANG_GIANHANG_MAGIANHANG" FromRole="GIANHANG" ToRole="LICHSUDANHGIAGIANHANG" />
+    <NavigationProperty Name="THANHVIENs" Relationship="shopeeModel.LICHSUTHEODOIGIANHANG" FromRole="GIANHANG" ToRole="THANHVIEN" />
+    <NavigationProperty Name="VOUCHERs" Relationship="shopeeModel.VOUCHER_GIANHANG" FromRole="GIANHANG" ToRole="VOUCHER" />
+    <NavigationProperty Name="HANGHOAs" Relationship="shopeeModel.FK__HANGHOA__MAGIANH__3C69FB99" FromRole="GIANHANG" ToRole="HANGHOA" />
+  </EntityType>
+  <EntityType Name="GIOHANG">
+    <Key>
+      <PropertyRef Name="ID_NGUOIMUA" />
+      <PropertyRef Name="MAGIANHANG" />
+      <PropertyRef Name="MAHANGHOA" />
+    </Key>
+    <Property Name="ID_NGUOIMUA" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="MAGIANHANG" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="MAHANGHOA" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+    <Property Name="NGAYTHEM" Type="DateTime" Precision="3" Nullable="false" />
+    <NavigationProperty Name="HANGHOA_GIANHANG" Relationship="shopeeModel.FK_GIOHANG_HANGHOA_GIANHANG" FromRole="GIOHANG" ToRole="HANGHOA_GIANHANG" />
+    <NavigationProperty Name="THANHVIEN" Relationship="shopeeModel.FK_GIOHANG_THANHVIEN_ID_NGUOIMUA" FromRole="GIOHANG" ToRole="THANHVIEN" />
+    <NavigationProperty Name="HANGHOA" Relationship="shopeeModel.FK_GIOHANG_HANGHOA" FromRole="GIOHANG" ToRole="HANGHOA" />
+  </EntityType>
+  <EntityType Name="HANGHOA_GIANHANG">
+    <Key>
+      <PropertyRef Name="MAGIANHANG" />
+      <PropertyRef Name="MAHANGHOA" />
+    </Key>
+    <Property Name="MAGIANHANG" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="MAHANGHOA" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="NGAYDANG" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="DONHANGs" Relationship="shopeeModel.FK_DONHANG_GIANHANG_MAGIANHANG_MAHANGHOA" FromRole="HANGHOA_GIANHANG" ToRole="DONHANG" />
+    <NavigationProperty Name="GIOHANGs" Relationship="shopeeModel.FK_GIOHANG_HANGHOA_GIANHANG" FromRole="HANGHOA_GIANHANG" ToRole="GIOHANG" />
+  </EntityType>
+  <EntityType Name="LICHSUDANHGIAGIANHANG">
+    <Key>
+      <PropertyRef Name="MAGIANHANG" />
+      <PropertyRef Name="ID_NGUOIMUA" />
+      <PropertyRef Name="NGAYDANHGIA_GIANHANG" />
+    </Key>
+    <Property Name="MAGIANHANG" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="ID_NGUOIMUA" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="NGAYDANHGIA_GIANHANG" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SOSAO_GIANHANG" Type="Int32" Nullable="false" />
+    <Property Name="NHANXET_GIANHANG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="GIANHANG" Relationship="shopeeModel.FK_LICHSUDANHGIAGIANHANG_GIANHANG_MAGIANHANG" FromRole="LICHSUDANHGIAGIANHANG" ToRole="GIANHANG" />
+    <NavigationProperty Name="THANHVIEN" Relationship="shopeeModel.FK_LICHSUDANHGIAGIANHANG_THANHVIEN_ID_NGUOIMUA" FromRole="LICHSUDANHGIAGIANHANG" ToRole="THANHVIEN" />
+  </EntityType>
+  <EntityType Name="LICHSUXEMHANGHOA">
+    <Key>
+      <PropertyRef Name="ID_TAIKHOAN" />
+      <PropertyRef Name="MAHANGHOA" />
+      <PropertyRef Name="THOIGIANTRUYCAP" />
+    </Key>
+    <Property Name="ID_TAIKHOAN" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="MAHANGHOA" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="THOIGIANTRUYCAP" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="HANGHOA" Relationship="shopeeModel.FK_LICHSUXEMHANGHOA_HANGHOA_MAHANGHOA" FromRole="LICHSUXEMHANGHOA" ToRole="HANGHOA" />
+    <NavigationProperty Name="THANHVIEN" Relationship="shopeeModel.FK_LICHSUXEMHANGHOA_THANHVIEN_ID_TAIKHOAN" FromRole="LICHSUXEMHANGHOA" ToRole="THANHVIEN" />
+  </EntityType>
+  <EntityType Name="LOAIVOUCHER">
+    <Key>
+      <PropertyRef Name="MALOAIVOUCHER" />
+    </Key>
+    <Property Name="MALOAIVOUCHER" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="TENLOAIVOUCHER" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="VOUCHERs" Relationship="shopeeModel.FK_VOUCHER_LOAIVOUCHER_LOAIVOUCHER" FromRole="LOAIVOUCHER" ToRole="VOUCHER" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="THANHTOAN">
+    <Key>
+      <PropertyRef Name="SO_THANHTOAN" />
+    </Key>
+    <Property Name="SO_THANHTOAN" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="NGAYTHANHTOAN" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ID_DONHANG" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="SOTIENTT" Type="Double" Nullable="false" />
+    <Property Name="UUDAI" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="LOAITHANHTOAN" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="HOANTIEN" Type="Double" />
+    <Property Name="LOAITTONLINE" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="DATHANG" Relationship="shopeeModel.FK_THANHTOAN_DONHANG" FromRole="THANHTOAN" ToRole="DATHANG" />
+    <NavigationProperty Name="VOUCHER" Relationship="shopeeModel.FK_THANHTOAN_VOUCHER" FromRole="THANHTOAN" ToRole="VOUCHER" />
+  </EntityType>
+  <EntityType Name="THANHVIEN">
+    <Key>
+      <PropertyRef Name="ID_THANHVIEN" />
+    </Key>
+    <Property Name="ID_THANHVIEN" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="EMAIL_TV" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="DIENTHOAI_TV" Type="Int32" Nullable="false" />
+    <Property Name="DIACHI_TV" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NGUOIBANFLAG" Type="Int32" Nullable="false" />
+    <Property Name="NGUOIMUAFLAG" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DATHANGs" Relationship="shopeeModel.FK_DATHANG_THANHVIEN_NGUOIMUA" FromRole="THANHVIEN" ToRole="DATHANG" />
+    <NavigationProperty Name="GIANHANGs" Relationship="shopeeModel.FK_GIANHANG_THANHVIEN_ID_NGUOIBAN" FromRole="THANHVIEN" ToRole="GIANHANG" />
+    <NavigationProperty Name="GIOHANGs" Relationship="shopeeModel.FK_GIOHANG_THANHVIEN_ID_NGUOIMUA" FromRole="THANHVIEN" ToRole="GIOHANG" />
+    <NavigationProperty Name="LICHSUDANHGIAGIANHANGs" Relationship="shopeeModel.FK_LICHSUDANHGIAGIANHANG_THANHVIEN_ID_NGUOIMUA" FromRole="THANHVIEN" ToRole="LICHSUDANHGIAGIANHANG" />
+    <NavigationProperty Name="LICHSUXEMHANGHOAs" Relationship="shopeeModel.FK_LICHSUXEMHANGHOA_THANHVIEN_ID_TAIKHOAN" FromRole="THANHVIEN" ToRole="LICHSUXEMHANGHOA" />
+    <NavigationProperty Name="GIANHANGs1" Relationship="shopeeModel.LICHSUTHEODOIGIANHANG" FromRole="THANHVIEN" ToRole="GIANHANG" />
+    <NavigationProperty Name="VOUCHERs" Relationship="shopeeModel.VOUCHER_NGUOIDUNG" FromRole="THANHVIEN" ToRole="VOUCHER" />
+    <NavigationProperty Name="LICHSUDANHGIAHANGHOAs" Relationship="shopeeModel.FK_LICHSUDANHGIAHANGHOA1_THANHVIEN_ID_NGUOIMUA" FromRole="THANHVIEN" ToRole="LICHSUDANHGIAHANGHOA" />
+    <NavigationProperty Name="TAIKHOANDANGNHAPs" Relationship="shopeeModel.FK_TAIKHOAN_THANHVIEN_ID_THANHVIEN" FromRole="THANHVIEN" ToRole="TAIKHOANDANGNHAP" />
+  </EntityType>
+  <EntityType Name="THONGTINDONHANG">
+    <Key>
+      <PropertyRef Name="ID_DONHANG" />
+      <PropertyRef Name="THOIGIAN" />
+    </Key>
+    <Property Name="ID_DONHANG" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="THOIGIAN" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TINHTRANG" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DATHANG" Relationship="shopeeModel.FK_THONGTINDONHANG_DATHANG_ID_DONHANG" FromRole="THONGTINDONHANG" ToRole="DATHANG" />
+  </EntityType>
+  <EntityType Name="THONGTINVANCHUYEN">
+    <Key>
+      <PropertyRef Name="MADONVAN" />
+      <PropertyRef Name="THOIGIAN" />
+    </Key>
+    <Property Name="MADONVAN" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="THOIGIAN" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TINHTRANG" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DONMUA" Relationship="shopeeModel.FK_THONGTINVANCHUYEN_DONMUA_MADONVAN" FromRole="THONGTINVANCHUYEN" ToRole="DONMUA" />
+  </EntityType>
+  <EntityType Name="VOUCHER">
+    <Key>
+      <PropertyRef Name="MAVOUCHER" />
+    </Key>
+    <Property Name="MAVOUCHER" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="MACODE" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="THOIGIANAPDUNG" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DIEUKIEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LOAIVOUCHER" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="LOAIVOUCHER1" Relationship="shopeeModel.FK_VOUCHER_LOAIVOUCHER_LOAIVOUCHER" FromRole="VOUCHER" ToRole="LOAIVOUCHER" />
+    <NavigationProperty Name="VOUCHER_NGANHHANG" Relationship="shopeeModel.FK_VOUCHER_NGANHHANG_VOUCHER_MAVOUCHER" FromRole="VOUCHER" ToRole="VOUCHER_NGANHHANG" />
+    <NavigationProperty Name="GIANHANGs" Relationship="shopeeModel.VOUCHER_GIANHANG" FromRole="VOUCHER" ToRole="GIANHANG" />
+    <NavigationProperty Name="THANHVIENs" Relationship="shopeeModel.VOUCHER_NGUOIDUNG" FromRole="VOUCHER" ToRole="THANHVIEN" />
+    <NavigationProperty Name="THANHTOANs" Relationship="shopeeModel.FK_THANHTOAN_VOUCHER" FromRole="VOUCHER" ToRole="THANHTOAN" />
+    <NavigationProperty Name="NGANHHANGs" Relationship="shopeeModel.VOUCHER_NGANHHANG1" FromRole="VOUCHER" ToRole="NGANHHANG" />
+  </EntityType>
+  <EntityType Name="VOUCHER_NGANHHANG">
+    <Key>
+      <PropertyRef Name="MAVOUCHER" />
+      <PropertyRef Name="MANGANHHANG" />
+    </Key>
+    <Property Name="MAVOUCHER" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="MANGANHHANG" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="VOUCHER" Relationship="shopeeModel.FK_VOUCHER_NGANHHANG_VOUCHER_MAVOUCHER" FromRole="VOUCHER_NGANHHANG" ToRole="VOUCHER" />
+  </EntityType>
+  <Association Name="FK_DATHANG_THANHVIEN_NGUOIMUA">
+    <End Type="shopeeModel.THANHVIEN" Role="THANHVIEN" Multiplicity="1" />
+    <End Type="shopeeModel.DATHANG" Role="DATHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THANHVIEN">
+        <PropertyRef Name="ID_THANHVIEN" />
+      </Principal>
+      <Dependent Role="DATHANG">
+        <PropertyRef Name="NGUOIMUA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DONMUA_DATHANG_ID_DONHANG">
+    <End Type="shopeeModel.DATHANG" Role="DATHANG" Multiplicity="1" />
+    <End Type="shopeeModel.DONMUA" Role="DONMUA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATHANG">
+        <PropertyRef Name="ID_DONHANG" />
+      </Principal>
+      <Dependent Role="DONMUA">
+        <PropertyRef Name="ID_DONHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DONTHANG_DATHANG_ID_DONHANG">
+    <End Type="shopeeModel.DATHANG" Role="DATHANG" Multiplicity="1" />
+    <End Type="shopeeModel.DONHANG" Role="DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATHANG">
+        <PropertyRef Name="ID_DONHANG" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="ID_DONHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_THONGTINDONHANG_DATHANG_ID_DONHANG">
+    <End Type="shopeeModel.DATHANG" Role="DATHANG" Multiplicity="1" />
+    <End Type="shopeeModel.THONGTINDONHANG" Role="THONGTINDONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATHANG">
+        <PropertyRef Name="ID_DONHANG" />
+      </Principal>
+      <Dependent Role="THONGTINDONHANG">
+        <PropertyRef Name="ID_DONHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DONHANG_GIANHANG_MAGIANHANG_MAHANGHOA">
+    <End Type="shopeeModel.HANGHOA_GIANHANG" Role="HANGHOA_GIANHANG" Multiplicity="1" />
+    <End Type="shopeeModel.DONHANG" Role="DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HANGHOA_GIANHANG">
+        <PropertyRef Name="MAGIANHANG" />
+        <PropertyRef Name="MAHANGHOA" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="MAGIANHANG" />
+        <PropertyRef Name="MASANPHAM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DONMUA_DONVIVANCHUYEN_MADVVC">
+    <End Type="shopeeModel.DONVIVANCHUYEN" Role="DONVIVANCHUYEN" Multiplicity="1" />
+    <End Type="shopeeModel.DONMUA" Role="DONMUA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DONVIVANCHUYEN">
+        <PropertyRef Name="MADONVI" />
+      </Principal>
+      <Dependent Role="DONMUA">
+        <PropertyRef Name="MADVVC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_THONGTINVANCHUYEN_DONMUA_MADONVAN">
+    <End Type="shopeeModel.DONMUA" Role="DONMUA" Multiplicity="1" />
+    <End Type="shopeeModel.THONGTINVANCHUYEN" Role="THONGTINVANCHUYEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DONMUA">
+        <PropertyRef Name="MADONVAN" />
+      </Principal>
+      <Dependent Role="THONGTINVANCHUYEN">
+        <PropertyRef Name="MADONVAN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GIANHANG_THANHVIEN_ID_NGUOIBAN">
+    <End Type="shopeeModel.THANHVIEN" Role="THANHVIEN" Multiplicity="1" />
+    <End Type="shopeeModel.GIANHANG" Role="GIANHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THANHVIEN">
+        <PropertyRef Name="ID_THANHVIEN" />
+      </Principal>
+      <Dependent Role="GIANHANG">
+        <PropertyRef Name="ID_NGUOIBAN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LICHSUDANHGIAGIANHANG_GIANHANG_MAGIANHANG">
+    <End Type="shopeeModel.GIANHANG" Role="GIANHANG" Multiplicity="1" />
+    <End Type="shopeeModel.LICHSUDANHGIAGIANHANG" Role="LICHSUDANHGIAGIANHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GIANHANG">
+        <PropertyRef Name="MAGIANHANG" />
+      </Principal>
+      <Dependent Role="LICHSUDANHGIAGIANHANG">
+        <PropertyRef Name="MAGIANHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GIOHANG_HANGHOA_GIANHANG">
+    <End Type="shopeeModel.HANGHOA_GIANHANG" Role="HANGHOA_GIANHANG" Multiplicity="1" />
+    <End Type="shopeeModel.GIOHANG" Role="GIOHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HANGHOA_GIANHANG">
+        <PropertyRef Name="MAGIANHANG" />
+        <PropertyRef Name="MAHANGHOA" />
+      </Principal>
+      <Dependent Role="GIOHANG">
+        <PropertyRef Name="MAGIANHANG" />
+        <PropertyRef Name="MAHANGHOA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GIOHANG_THANHVIEN_ID_NGUOIMUA">
+    <End Type="shopeeModel.THANHVIEN" Role="THANHVIEN" Multiplicity="1" />
+    <End Type="shopeeModel.GIOHANG" Role="GIOHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THANHVIEN">
+        <PropertyRef Name="ID_THANHVIEN" />
+      </Principal>
+      <Dependent Role="GIOHANG">
+        <PropertyRef Name="ID_NGUOIMUA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LICHSUXEMHANGHOA_HANGHOA_MAHANGHOA">
+    <End Type="shopeeModel.HANGHOA" Role="HANGHOA" Multiplicity="1" />
+    <End Type="shopeeModel.LICHSUXEMHANGHOA" Role="LICHSUXEMHANGHOA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HANGHOA">
+        <PropertyRef Name="MAHANGHOA" />
+      </Principal>
+      <Dependent Role="LICHSUXEMHANGHOA">
+        <PropertyRef Name="MAHANGHOA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LICHSUDANHGIAGIANHANG_THANHVIEN_ID_NGUOIMUA">
+    <End Type="shopeeModel.THANHVIEN" Role="THANHVIEN" Multiplicity="1" />
+    <End Type="shopeeModel.LICHSUDANHGIAGIANHANG" Role="LICHSUDANHGIAGIANHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THANHVIEN">
+        <PropertyRef Name="ID_THANHVIEN" />
+      </Principal>
+      <Dependent Role="LICHSUDANHGIAGIANHANG">
+        <PropertyRef Name="ID_NGUOIMUA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LICHSUXEMHANGHOA_THANHVIEN_ID_TAIKHOAN">
+    <End Type="shopeeModel.THANHVIEN" Role="THANHVIEN" Multiplicity="1" />
+    <End Type="shopeeModel.LICHSUXEMHANGHOA" Role="LICHSUXEMHANGHOA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THANHVIEN">
+        <PropertyRef Name="ID_THANHVIEN" />
+      </Principal>
+      <Dependent Role="LICHSUXEMHANGHOA">
+        <PropertyRef Name="ID_TAIKHOAN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VOUCHER_LOAIVOUCHER_LOAIVOUCHER">
+    <End Type="shopeeModel.LOAIVOUCHER" Role="LOAIVOUCHER" Multiplicity="1" />
+    <End Type="shopeeModel.VOUCHER" Role="VOUCHER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAIVOUCHER">
+        <PropertyRef Name="MALOAIVOUCHER" />
+      </Principal>
+      <Dependent Role="VOUCHER">
+        <PropertyRef Name="LOAIVOUCHER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VOUCHER_NGANHHANG_VOUCHER_MAVOUCHER">
+    <End Type="shopeeModel.VOUCHER" Role="VOUCHER" Multiplicity="1" />
+    <End Type="shopeeModel.VOUCHER_NGANHHANG" Role="VOUCHER_NGANHHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VOUCHER">
+        <PropertyRef Name="MAVOUCHER" />
+      </Principal>
+      <Dependent Role="VOUCHER_NGANHHANG">
+        <PropertyRef Name="MAVOUCHER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LICHSUTHEODOIGIANHANG">
+    <End Type="shopeeModel.THANHVIEN" Role="THANHVIEN" Multiplicity="*" />
+    <End Type="shopeeModel.GIANHANG" Role="GIANHANG" Multiplicity="*" />
+  </Association>
+  <Association Name="VOUCHER_GIANHANG">
+    <End Type="shopeeModel.GIANHANG" Role="GIANHANG" Multiplicity="*" />
+    <End Type="shopeeModel.VOUCHER" Role="VOUCHER" Multiplicity="*" />
+  </Association>
+  <Association Name="VOUCHER_NGUOIDUNG">
+    <End Type="shopeeModel.THANHVIEN" Role="THANHVIEN" Multiplicity="*" />
+    <End Type="shopeeModel.VOUCHER" Role="VOUCHER" Multiplicity="*" />
+  </Association>
+  <EntityType Name="LICHSUDANHGIAHANGHOA">
+    <Key>
+      <PropertyRef Name="MAHANGHOA" />
+      <PropertyRef Name="ID_NGUOIMUA" />
+      <PropertyRef Name="NGAYDANHGIA_HANGHOA" />
+    </Key>
+    <Property Name="MAHANGHOA" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="ID_NGUOIMUA" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="NGAYDANHGIA_HANGHOA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SOSAO_HANGHOA" Type="Int32" Nullable="false" />
+    <Property Name="NHANXET_HANGHOA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HANGHOA" Relationship="shopeeModel.FK_LICHSUDANHGIAHANGHOA_HANGHOA_MAHANGHOA" FromRole="LICHSUDANHGIAHANGHOA" ToRole="HANGHOA" />
+    <NavigationProperty Name="THANHVIEN" Relationship="shopeeModel.FK_LICHSUDANHGIAHANGHOA1_THANHVIEN_ID_NGUOIMUA" FromRole="LICHSUDANHGIAHANGHOA" ToRole="THANHVIEN" />
+  </EntityType>
+  <EntityType Name="TAIKHOANDANGNHAP">
+    <Key>
+      <PropertyRef Name="ID_TAIKHOAN" />
+    </Key>
+    <Property Name="ID_TAIKHOAN" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="TENDANGNHAP" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="MATKHAU" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ID_THANHVIEN" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="LOAITAIKHOAN" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="THANHVIEN" Relationship="shopeeModel.FK_TAIKHOAN_THANHVIEN_ID_THANHVIEN" FromRole="TAIKHOANDANGNHAP" ToRole="THANHVIEN" />
+  </EntityType>
+  <Association Name="FK_THANHTOAN_DONHANG">
+    <End Type="shopeeModel.DATHANG" Role="DATHANG" Multiplicity="1" />
+    <End Type="shopeeModel.THANHTOAN" Role="THANHTOAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DATHANG">
+        <PropertyRef Name="ID_DONHANG" />
+      </Principal>
+      <Dependent Role="THANHTOAN">
+        <PropertyRef Name="ID_DONHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DONHANG_HANGHOA">
+    <End Type="shopeeModel.HANGHOA" Role="HANGHOA" Multiplicity="1" />
+    <End Type="shopeeModel.DONHANG" Role="DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HANGHOA">
+        <PropertyRef Name="MAHANGHOA" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="MASANPHAM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HANGHOA__MAGIANH__3C69FB99">
+    <End Type="shopeeModel.GIANHANG" Role="GIANHANG" Multiplicity="0..1" />
+    <End Type="shopeeModel.HANGHOA" Role="HANGHOA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GIANHANG">
+        <PropertyRef Name="MAGIANHANG" />
+      </Principal>
+      <Dependent Role="HANGHOA">
+        <PropertyRef Name="MAGIANHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GIOHANG_HANGHOA">
+    <End Type="shopeeModel.HANGHOA" Role="HANGHOA" Multiplicity="1" />
+    <End Type="shopeeModel.GIOHANG" Role="GIOHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HANGHOA">
+        <PropertyRef Name="MAHANGHOA" />
+      </Principal>
+      <Dependent Role="GIOHANG">
+        <PropertyRef Name="MAHANGHOA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LICHSUDANHGIAHANGHOA_HANGHOA_MAHANGHOA">
+    <End Type="shopeeModel.HANGHOA" Role="HANGHOA" Multiplicity="1" />
+    <End Type="shopeeModel.LICHSUDANHGIAHANGHOA" Role="LICHSUDANHGIAHANGHOA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HANGHOA">
+        <PropertyRef Name="MAHANGHOA" />
+      </Principal>
+      <Dependent Role="LICHSUDANHGIAHANGHOA">
+        <PropertyRef Name="MAHANGHOA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LICHSUDANHGIAHANGHOA1_THANHVIEN_ID_NGUOIMUA">
+    <End Type="shopeeModel.THANHVIEN" Role="THANHVIEN" Multiplicity="1" />
+    <End Type="shopeeModel.LICHSUDANHGIAHANGHOA" Role="LICHSUDANHGIAHANGHOA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THANHVIEN">
+        <PropertyRef Name="ID_THANHVIEN" />
+      </Principal>
+      <Dependent Role="LICHSUDANHGIAHANGHOA">
+        <PropertyRef Name="ID_NGUOIMUA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TAIKHOAN_THANHVIEN_ID_THANHVIEN">
+    <End Type="shopeeModel.THANHVIEN" Role="THANHVIEN" Multiplicity="1" />
+    <End Type="shopeeModel.TAIKHOANDANGNHAP" Role="TAIKHOANDANGNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THANHVIEN">
+        <PropertyRef Name="ID_THANHVIEN" />
+      </Principal>
+      <Dependent Role="TAIKHOANDANGNHAP">
+        <PropertyRef Name="ID_THANHVIEN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_THANHTOAN_VOUCHER">
+    <End Type="shopeeModel.VOUCHER" Role="VOUCHER" Multiplicity="0..1" />
+    <End Type="shopeeModel.THANHTOAN" Role="THANHTOAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VOUCHER">
+        <PropertyRef Name="MAVOUCHER" />
+      </Principal>
+      <Dependent Role="THANHTOAN">
+        <PropertyRef Name="UUDAI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VOUCHER_NGANHHANG1">
+    <End Type="shopeeModel.NGANHHANG" Role="NGANHHANG" Multiplicity="*" />
+    <End Type="shopeeModel.VOUCHER" Role="VOUCHER" Multiplicity="*" />
+  </Association>
 </Schema>
