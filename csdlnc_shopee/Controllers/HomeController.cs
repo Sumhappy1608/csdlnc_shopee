@@ -14,7 +14,7 @@ namespace csdlnc_shopee.Controllers
         public ActionResult Index()
         {
             shopeeEntities2 db = new shopeeEntities2();
-            List<HANGHOA> pList = db.HANGHOAs.ToList();
+            List<HANGHOA> pList = db.HANGHOAs.Take(12).ToList();
             return View(pList);
             
         }
