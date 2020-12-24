@@ -1,4 +1,6 @@
-﻿
+﻿@{
+    var account = Session["account"] as csdlnc_shopee.Models.TAIKHOANDANGNHAP;
+}
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -78,8 +80,18 @@
                                     <ul class="list-main">
                                         <li><i class="ti-location-pin"></i>Store location</li>
                                         <li><i class="ti-alarm-clock"></i><a href="#">Daily deal</a></li>
-                                        <li><i class="ti-user"></i><a href="#">My account</a></li>
-                                        <li><i class="ti-power-off"></i><a href="login.html#">Login</a></li>
+
+                                        @if (@account != null) //Nếu có tài khoản
+                                        {
+                                            <li><i class="ti-user"></i><a href="#">@account.TENDANGNHAP</a></li>
+                                            <li><i class="ti-power-off"></i><a href="/Login/Logout">Logout</a></li>
+                                        }
+                                        else  //Nếu không có tài khoản
+                                        {
+                                            <li><i class="ti-user"></i><a href="#">My account!</a></li>
+                                            <li><i class="ti-power-off"></i><a href="/Login">Login</a></li>
+                                        }
+                                        @*<li><i class="ti-power-off"></i><a href="/Login">Login</a></li>*@
                                     </ul>
                                 </div>
                                 <!-- End Top Right -->
@@ -274,7 +286,7 @@
                                                             </ul>
                                                         </li>
                                                         <li><a href="#">Pages</a></li>
-                                                       
+
                                                         <li><a href="contact.html">Contact Us</a></li>
                                                     </ul>
                                                 </div>
